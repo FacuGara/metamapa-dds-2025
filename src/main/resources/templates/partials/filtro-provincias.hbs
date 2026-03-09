@@ -1,0 +1,7 @@
+<option value="">Todas</option>
+{{#each provincias}}
+    <option value="{{this}}"
+        {{#if (eq this ../provinciaSeleccionada)}}selected{{/if}}>
+        {{this}}
+    </option>
+{{/each}}

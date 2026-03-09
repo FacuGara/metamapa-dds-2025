@@ -1,0 +1,49 @@
+{{#partial "head"}}
+    <title> Solicitudes - MetaMapa </title>
+    <link rel="stylesheet" href="/assets/solicitudes-listado.css">
+    <script src="/assets/js/solicitudes-filtro.js"></script>
+{{/partial}}
+
+{{#partial "contenido-main"}}
+    <div class="contenedor-padre">
+        <div class="container-filtros">
+            <form class="form-filtros"
+                hx-get="/admin/solicitudes"
+                hx-target="#resultados-solicitudes"
+                hx-push-url="true"
+                hx-trigger="change">
+
+                <label class="container-filtros-label"> Estado </label>
+                    <ul class="lista-estados">
+                      <li class="estado-item">
+                        <label class="estado-opcion" for="estado-pendiente">
+                          <input id="estado-pendiente" type="radio" name="estado" value="PENDIENTE"/>
+                          <span class="estado-texto">Pendientes</span>
+                        </label>
+                      </li>
+
+                      <li class="estado-item">
+                        <label class="estado-opcion" for="estado-aceptada">
+                          <input id="estado-aceptada" type="radio" name="estado" value="ACEPTADA"/>
+                          <span class="estado-texto">Aceptadas</span>
+                        </label>
+                      </li>
+
+                      <li class="estado-item">
+                        <label class="estado-opcion" for="estado-rechazada">
+                          <input id="estado-rechazada" type="radio" name="estado" value="RECHAZADA"/>
+                          <span class="estado-texto">Rechazadas</span>
+                        </label>
+                      </li>
+                    </ul>
+
+            </form>
+        </div>
+
+        <div id="resultados-solicitudes" class="container-tarjetas">
+            {{> templates/partials/resultados.solicitudes}}
+        </div>
+    </div>
+
+{{/partial}}
+{{> templates/layout/layout.administrador}}
