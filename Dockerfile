@@ -1,7 +1,7 @@
 # ===============================
 # ETAPA 1: Construcción del .jar
 # ===============================
-FROM maven:3.9.9-eclipse-temurin-17 AS build
+FROM --platform=linux/amd64 maven:3.9.9-eclipse-temurin-17 AS build
 
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -18,7 +18,7 @@ RUN mvn clean package -Dmaven.test.skip=true
 # ===============================
 # ETAPA 2: Imagen final de ejecución
 # ===============================
-FROM eclipse-temurin:17-jdk-jammy
+FROM --platform=linux/amd64 eclipse-temurin:17-jdk-jammy
 
 WORKDIR /app
 

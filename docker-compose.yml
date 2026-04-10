@@ -1,6 +1,7 @@
 services:
   db:
     image: mysql:8.0
+    platform: linux/amd64  
     container_name: tpa_db
     restart: always
     environment:
